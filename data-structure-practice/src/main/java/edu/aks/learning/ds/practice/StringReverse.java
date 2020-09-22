@@ -17,12 +17,10 @@ public class StringReverse {
         System.out.println("1. --------- Using Loop ---------- ::" + reversePattern1(input));
         System.out.println("2. --------- Using Recursion ---------- ::" + reversePattern2(input));
         System.out.println("3. --------- Using Arrays ----------::" + reversePattern3(input));
-
-
+        System.out.println("3. --------- Using String Builder ----------::" + reversePattern4(input));
     }
 
-
-    public static String reversePattern1(String input) {
+    private static String reversePattern1(String input) {
         String result = "";
 
         for (int i = 0; i < input.length(); i++) {
@@ -31,12 +29,9 @@ public class StringReverse {
         return result;
     }
 
-
-    public static String reversePattern2(String input) {
+    private static String reversePattern2(String input) {
         String reverse = "";
-        if (input.length() == 1) {
-            return input;
-        }
+        if (input.length() == 1) return input;
         while (input.length() > 1) {
             reverse = input.charAt(input.length() - 1) + reversePattern2(input.substring(0, input.length() - 1));
             return reverse;
@@ -44,14 +39,21 @@ public class StringReverse {
         return null;
     }
 
-
-    public static String reversePattern3(String input) {
+    private static String reversePattern3(String input) {
         String reverse = "";
         char[] arr = input.toCharArray();
-        for (int i = 0; i < arr.length; i++) {
-            reverse =  arr[i] + reverse;
+        for (char c : arr) {
+            reverse = c + reverse;
         }
         return reverse;
+    }
+
+
+    private static String reversePattern4(String input) {
+        String reverse = "";
+        StringBuilder sb = new StringBuilder(input);
+        sb.reverse();
+        return sb.toString();
     }
 
 }
