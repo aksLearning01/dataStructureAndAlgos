@@ -1,9 +1,10 @@
-package edu.aks.learning.ds.practice;
+package edu.ask.learning.ds.string;
+
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
-public class StringReverse {
+public class StringReversal {
 
 
     public static void main(String[] args) throws Exception {
@@ -57,3 +58,4 @@ public class StringReverse {
     }
 
 }
+
