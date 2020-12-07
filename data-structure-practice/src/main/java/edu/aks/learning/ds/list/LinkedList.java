@@ -1,21 +1,23 @@
 package edu.aks.learning.ds.list;
 
 public class LinkedList {
-    Node head;
+    public Node head;
 
-    static class Node {
-        int data;
-        Node next;
+    public static class Node {
+        public int data;
+        public Node next;
 
-        Node(int data) {
+        public Node(int data) {
             this.data = data;
             this.next = null;
         }
     }
 
+    public boolean isEmpty() {
+        return length() == 0;
+    }
 
     public void insert(int data) {
-
         Node newNode = new Node(data);
         //if the list is empty , insert first element
         if (head == null) {
@@ -67,6 +69,32 @@ public class LinkedList {
             curr = curr.next;
         }
         System.out.print(" " + curr.data);
+        System.out.println("");
+    }
+
+    public int length() {
+        int size = 0;
+        Node currNode = head;
+        if (head != null) {
+            while (currNode.next != null) {
+                size++;
+                currNode = currNode.next;
+            }
+            size++;
+        }
+        return size;
+    }
+
+    public LinkedList reverse() {
+        int size = length();
+        LinkedList ll = new LinkedList();
+        Node currNode = head;
+        while (currNode.next != null) {
+            ll.insertAtStart(currNode.data);
+            currNode = currNode.next;
+        }
+        ll.insertAtStart(currNode.data);
+        return ll;
     }
 
     public static void main(String[] args) {
@@ -77,15 +105,16 @@ public class LinkedList {
         list.insert(4);
 
         list.display();
-        System.out.println("Element at head" + list.head.data);
-        System.out.println("");
+        System.out.println("Element at head is : " + list.head.data);
         list.removeFirst();
         list.display();
-        System.out.println("Element at head" + list.head.data);
+
+        System.out.println("Element at head is : " + list.head.data);
         list.insertAtStart(5);
         list.display();
-        System.out.println("Element at head" + list.head.data);
-        System.out.println("");
+        System.out.println("Element at head is : " + list.head.data);
+        list.display();
+        System.out.println("Reversed List is : ");
+        (list.reverse()).display();
     }
-
 }
